@@ -11,6 +11,8 @@ export function MapService(api, $q) {
         lng: parseFloat(nearestLocation.lng)
       }
     });
+    scope[activeLocationScopeVariable] = nearestLocation;
+    console.log(nearestLocation);
     var infowindow = new google.maps.InfoWindow, marker;
     angular.forEach(markers, location => {
 
@@ -65,7 +67,7 @@ export function MapService(api, $q) {
     let beginCoord = {};
 
     return locations.reduce((prev, current) => {
-      current.distance = calculateDistance(current.lat, current.long, currentCoords.lat, currentCoords.long);
+      current.distance = calculateDistance(current.lat, current.lng, currentCoords.lat, currentCoords.long);
       current.location = current;
       if (prev.long && prev.lat) {
         if (current.distance < prev.distance) {

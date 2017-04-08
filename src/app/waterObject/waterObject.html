@@ -4,9 +4,15 @@
     <div uib-slide ng-repeat="slide in ctrl.object.images track by $index" index="$index">
       <img ng-src="{{slide.link}}" style="margin:auto;">
       <div class="carousel-caption">
-        <h4>Slide {{$index}}</h4>
+        <h4>Image {{$index + 1}}</h4>
       </div>
     </div>
   </div>
-  <div ng-bind-html="$sce.trustAsHtml(ctrl.object.desc)"></div>
+  <div ng-bind-html="$sce.trustAsHtml(ctrl.object.desc)" class="object-desc"></div>
+  <div class="edit-button-box">
+    <div class="btn btn-default" ui-sref="addObject({id: ctrl.object._id})">Edit Object</div>
+  </div>
+</div>
+<div class="loader-container" ng-if="ctrl.$scope.animation">
+  <div class="loader"></div>
 </div>

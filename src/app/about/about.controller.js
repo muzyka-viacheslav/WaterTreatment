@@ -63,5 +63,27 @@ export class AboutController {
         'logo': 'babel.png'
       }
     ];
+    this.aboutItems = [
+      {
+        title: 'Author',
+        value: 'Muzyka Viacheslav'
+      },
+      {
+        title: 'Theme',
+        value: 'Water treatment in Ukraine'
+      },
+      {
+        title: 'Group',
+        value: 'TM-32'
+      },
+      {
+        title: 'University',
+        value: 'NTUU "KPI"'
+      },
+      {
+        title: 'Mentor',
+        value: 'Shulzhenko Oleg Feodosiyovich'
+      }
+    ];
   }
 }

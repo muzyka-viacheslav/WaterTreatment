@@ -1,6 +1,5 @@
 .map-container {
   display: flex;
-  align-items: center;
   margin: 15px;
   #map {
     flex-basis: 60%;
@@ -8,5 +7,42 @@
   }
   .selected-marker {
     flex-basis: 40%;
+    min-width: 40%;
+    .title {
+      padding: 10px 15px;
+      font-size: 14px;
+      color: rgba(0, 0, 0, .4);
+      transition: all 0.3s ease;
+      &:hover {
+        font-size: 18px;
+        background-color: darken(#fff, 10%);
+      }
+    }
+    .value {
+      padding: 10px 15px;
+      font-size: 16px;
+      color: rgba(0, 0, 0, .7);
+      font-weight: 700;
+      transition: all 0.3s ease;
+      &:hover {
+        font-size: 18px;
+        background-color: darken(#fff, 10%);
+      }
+    }
+    .object-name {
+      font-size: 20px;
+    }
+    .link-to-object {
+      padding: 15px;
+      background-color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      color: rgba(0, 0, 0, .8);
+      &:hover {
+        font-size: 18px;
+        background-color: darken(#fff, 10%);
+      }
+    }
   }
 }

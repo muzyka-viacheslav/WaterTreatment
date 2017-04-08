@@ -29,7 +29,11 @@
       </div>
     </div>
     <div class="input-box">
-      <button class="btn btn-default" ng-click="ctrl.addObject()">Add Object</button>
+      <button class="btn btn-default" ng-click="ctrl.addObject()">Save Object</button>
     </div>
   </form>
 </div>
+<div class="loader-container" ng-if="ctrl.$scope.animation">
+  <div class="loader"></div>
+</div>
+

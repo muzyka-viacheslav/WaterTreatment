@@ -1,7 +1,18 @@
 <div class="map-container">
   <div id="map"></div>
   <div class="selected-marker" ng-if="activeLocation.name">
-    {{activeLocation.name}}
-    <span ui-sref="waterObject({id: activeLocation._id})">Go to object</span>
+    <div class="object-name">
+      <div class="title">Name: </div>
+      <div class="value">{{activeLocation.name}}</div>
+    </div>
+    <div class="coordinates">
+      <div><div class="title">Latitude: </div><div class="value">{{activeLocation.lat}}</div></div>
+      <div><div class="title">Longitude: </div><div class="value">{{activeLocation.lng}}</div></div>
+    </div>
+    <div>
+      <div class="title">Distance from your current location:</div>
+      <div class="value">{{activeLocation.distance | number: 1}} km.</div>
+    </div>
+    <div ui-sref="waterObject({id: activeLocation._id})" class="link-to-object">Go to object</div>
   </div>
 </div>

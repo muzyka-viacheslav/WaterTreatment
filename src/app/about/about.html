@@ -1,4 +1,13 @@
-<div class="container">
+<div class="about-container">
+  <div class="about-me">
+    <div ng-repeat="item in ctrl.aboutItems" class="item-box">
+      <div class="title">{{item.title}}: </div>
+      <div class="value">{{item.value}}</div>
+    </div>
+  </div>
+  <h3 class="h">
+    Used technologies:
+  </h3>
   <div class="row">
     <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in ctrl.awesomeThings | orderBy:'rank'">
       <div class="thumbnail">

@@ -20,7 +20,7 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controllerAs: 'ctrl'
     })
     .state('addObject', {
-      url: '/addObject',
+      url: '/addObject?{id}',
       templateUrl: 'app/addObject/addObject.html',
       controller: 'AddObjectController',
       controllerAs: 'ctrl'
