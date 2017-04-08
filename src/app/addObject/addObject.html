@@ -1,0 +1,35 @@
+<div class="add-object-container">
+  <form action="" name="addObjectForm" onsubmit="event.preventDefault();">
+    <div class="input-box">
+      <label for="name">Name:</label>
+      <input type="text" id="name" class="form-control" ng-model="ctrl.newObject.name">
+    </div>
+    <div class="input-box">
+      <label for="lat">Latitude:</label>
+      <input type="text" id="lat" class="form-control" ng-model="ctrl.newObject.lat">
+    </div>
+    <div class="input-box">
+      <label for="lng">Longitude:</label>
+      <input type="text" id="lng" class="form-control" ng-model="ctrl.newObject.lng">
+    </div>
+    <div class="input-box">
+      <label for="desc">Description:</label>
+      <div text-angular ng-model="ctrl.newObject.desc" id="desc"></div>
+    </div>
+    <div class="imagesInputContainer">
+      <label for="">Images:</label>
+      <div class="image-input-box" ng-repeat="img in ctrl.newObject.images track by $index">
+        <div class="input-box">
+          <input type="text" ng-model="img.link" class="form-control">
+          <i class="fa fa-trash" aria-hidden="true" ng-click="ctrl.removeImage($index)"></i>
+        </div>
+      </div>
+      <div class="add-image" ng-click="ctrl.addImage()">
+        <i class="fa fa-plus-square" aria-hidden="true"></i> <span>Add Image</span>
+      </div>
+    </div>
+    <div class="input-box">
+      <button class="btn btn-default" ng-click="ctrl.addObject()">Add Object</button>
+    </div>
+  </form>
+</div>

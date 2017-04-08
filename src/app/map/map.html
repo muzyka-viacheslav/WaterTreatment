@@ -1,0 +1,7 @@
+<div class="map-container">
+  <div id="map"></div>
+  <div class="selected-marker" ng-if="activeLocation.name">
+    {{activeLocation.name}}
+    <span ui-sref="waterObject({id: activeLocation._id})">Go to object</span>
+  </div>
+</div>
