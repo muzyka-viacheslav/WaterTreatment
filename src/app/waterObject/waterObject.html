@@ -1,4 +1,12 @@
 <div class="water-object-container">
   <h2>{{ctrl.object.name}}</h2>
+  <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" class="images-carousel">
+    <div uib-slide ng-repeat="slide in ctrl.object.images track by $index" index="$index">
+      <img ng-src="{{slide.link}}" style="margin:auto;">
+      <div class="carousel-caption">
+        <h4>Slide {{$index}}</h4>
+      </div>
+    </div>
+  </div>
   <div ng-bind-html="$sce.trustAsHtml(ctrl.object.desc)"></div>
 </div>

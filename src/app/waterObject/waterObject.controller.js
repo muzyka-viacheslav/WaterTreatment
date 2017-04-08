@@ -7,6 +7,11 @@ export class WaterObjectController {
     this.$stateParams = $stateParams;
     this.$compile = $compile;
     this.getData();
+
+
+    $scope.myInterval = 5000;
+    $scope.noWrapSlides = false;
+    $scope.active = 0;
   }
 
   getData() {
