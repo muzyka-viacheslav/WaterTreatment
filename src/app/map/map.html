@@ -16,3 +16,12 @@
     <div ui-sref="waterObject({id: activeLocation._id})" class="link-to-object">Go to object</div>
   </div>
 </div>
+<div class="other-container">
+  <div class="other-header">
+    All objects:
+  </div>
+  <div class="object" ng-repeat="object in objects">
+    <div class="title">Name: </div>
+    <div class="value"><span class="name">{{object.name}},</span> distance: {{object.distance}}</div>
+  </div>
+</div>

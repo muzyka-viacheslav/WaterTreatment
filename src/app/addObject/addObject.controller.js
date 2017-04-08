@@ -45,7 +45,7 @@ export class AddObjectController {
     }
     this.api
       .post(`waterObjects`, insertedObject)
-      .then(response => {
+      .then(() => {
         this.$scope.animation = false;
       })
   }

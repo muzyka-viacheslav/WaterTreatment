@@ -12,7 +12,6 @@ export function MapService(api, $q) {
       }
     });
     scope[activeLocationScopeVariable] = nearestLocation;
-    console.log(nearestLocation);
     var infowindow = new google.maps.InfoWindow, marker;
     angular.forEach(markers, location => {
 
