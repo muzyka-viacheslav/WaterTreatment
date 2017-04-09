@@ -61,6 +61,12 @@ export class AboutController {
         'url': 'https://babeljs.io/',
         'description': 'Turns ES6+ code into vanilla ES5, so you can use next generation features today.',
         'logo': 'babel.png'
+      },
+      {
+        'title': 'Node.js',
+        'url': 'https://nodejs.org/',
+        'description': "Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.",
+        'logo': 'nodejs.png'
       }
     ];
     this.aboutItems = [
