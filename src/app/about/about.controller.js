@@ -66,11 +66,11 @@ export class AboutController {
     this.aboutItems = [
       {
         title: 'Author',
-        value: 'Muzyka Viacheslav'
+        value: 'Denis Novosiadlyy'
       },
       {
         title: 'Theme',
-        value: 'Water treatment in Ukraine'
+        value: 'Forests in Ukraine'
       },
       {
         title: 'Group',

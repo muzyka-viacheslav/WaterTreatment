@@ -1,5 +1,6 @@
 /* global moment:false */
 
+import '../../bower_components/bootstrap/dist/js/bootstrap.min';
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 

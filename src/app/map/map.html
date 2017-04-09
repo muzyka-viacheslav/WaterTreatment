@@ -22,6 +22,6 @@
   </div>
   <div class="object" ng-repeat="object in objects">
     <div class="title">Name: </div>
-    <div class="value"><span class="name">{{object.name}},</span> distance: {{object.distance}}</div>
+    <div class="value"><span class="name">{{object.name}},</span> distance: {{object.distance | number: 1}} km.</div>
   </div>
 </div>

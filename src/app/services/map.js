@@ -35,7 +35,7 @@ export function MapService(api, $q) {
     let defer = $q.defer();
 
     api
-      .get(`waterObjects`)
+      .get(`forestObjects`)
       .then(response => {
         defer.resolve(response.data);
       }, response => {
