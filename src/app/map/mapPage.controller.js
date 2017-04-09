@@ -11,6 +11,8 @@ export class MapPageController {
           .then(responseUser => {
             let nearestLocation = map.chooseNearestLocation(response, responseUser);
             map.init(response, nearestLocation, 'map', $scope, 'activeLocation');
+          }, () => {
+            map.init(response, $scope.objects[0], 'map', $scope, 'activeLocation');
           });
       });
   }

@@ -1,5 +1,7 @@
 /* global moment:false */
 
+import '../../bower_components/bootstrap/dist/js/bootstrap.min';
+
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 
@@ -17,9 +19,10 @@ import { MapService } from './services/map';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 
 let local = 'http://localhost:4000/';
+let selfIP = 'http://192.168.88.254:4000/';
 angular.module('waterTreatment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'textAngular'])
   .constant('moment', moment)
-  .constant('API_URL', local)
+  .constant('API_URL', selfIP)
   .config(config)
   .config(routerConfig)
   .run(runBlock)
