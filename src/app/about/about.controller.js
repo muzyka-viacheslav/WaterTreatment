@@ -9,6 +9,12 @@ export class AboutController {
         'logo': 'angular.png'
       },
       {
+        'title': 'Node.js',
+        'url': 'https://nodejs.org/',
+        'description': "Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.",
+        'logo': 'nodejs.png'
+      },
+      {
         'title': 'BrowserSync',
         'url': 'http://browsersync.io/',
         'description': 'Time-saving synchronised browser testing.',
@@ -21,22 +27,10 @@ export class AboutController {
         'logo': 'gulp.png'
       },
       {
-        'title': 'Jasmine',
-        'url': 'http://jasmine.github.io/',
-        'description': 'Behavior-Driven JavaScript.',
-        'logo': 'jasmine.png'
-      },
-      {
         'title': 'Karma',
         'url': 'http://karma-runner.github.io/',
         'description': 'Spectacular Test Runner for JavaScript.',
         'logo': 'karma.png'
-      },
-      {
-        'title': 'Protractor',
-        'url': 'https://github.com/angular/protractor',
-        'description': 'End to end test framework for AngularJS applications built on top of WebDriverJS.',
-        'logo': 'protractor.png'
       },
       {
         'title': 'Bootstrap',
@@ -61,12 +55,6 @@ export class AboutController {
         'url': 'https://babeljs.io/',
         'description': 'Turns ES6+ code into vanilla ES5, so you can use next generation features today.',
         'logo': 'babel.png'
-      },
-      {
-        'title': 'Node.js',
-        'url': 'https://nodejs.org/',
-        'description': "Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.",
-        'logo': 'nodejs.png'
       }
     ];
     this.aboutItems = [

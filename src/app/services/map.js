@@ -20,11 +20,21 @@ export function MapService(api, $q) {
         map: map
       });
 
+      var markerHtml = ``;
+
       google.maps.event.addListener(marker, 'click', (function (marker) {
         return function () {
           scope[activeLocationScopeVariable] = location;
           scope.$digest();
-          infowindow.setContent(location.name);
+          markerHtml = `<div class="marker-content">
+                          <div class="marker-name">
+                            <span>Name: </span><strong>${location.name}</strong>
+                          </div>
+                          <div class="marker-distance">
+                            <span>Distance: </span><strong>${Math.round(location.distance)} km.</strong>
+                          </div>
+                        </div>`;
+          infowindow.setContent(markerHtml);
           infowindow.open(map, marker);
         }
       })(marker));
