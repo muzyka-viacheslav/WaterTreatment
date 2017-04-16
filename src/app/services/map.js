@@ -15,7 +15,7 @@ export function MapService(api, $q, polygon) {
     var infowindow = new google.maps.InfoWindow, marker;
     angular.forEach(markers, location => {
       polygon
-        .get(`${location.id}`)
+        .get(`${location.cityId}`)
         .then(response => {
           var town = new google.maps.Polygon({
             paths: response,

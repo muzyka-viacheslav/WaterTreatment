@@ -39,7 +39,7 @@ export class AddObjectController {
       lng: this.newObject.lng,
       desc: this.newObject.desc,
       images: this.newObject.images,
-      id: this.newObject.id
+      cityId: this.newObject.cityId
     };
     if (this.$stateParams.id) {
       insertedObject.id = this.$stateParams.id;
