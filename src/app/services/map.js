@@ -2,10 +2,15 @@ export function MapService(api, $q, polygon) {
   'ngInject';
   let userCoords = {};
   let deferLocation = $q.defer();
+  let map;
+
+  function setCenter(location) {
+    map.setCenter({lat: parseFloat(location.lat), lng: parseFloat(location.lng)});
+  }
 
   function init(markers, nearestLocation, mapId, scope, activeLocationScopeVariable) {
-    var map = new google.maps.Map(document.getElementById(mapId), {
-      zoom: 10,
+    map = new google.maps.Map(document.getElementById(mapId), {
+      zoom: 12,
       center: {
         lat: parseFloat(nearestLocation.lat),
         lng: parseFloat(nearestLocation.lng)
@@ -132,6 +137,7 @@ export function MapService(api, $q, polygon) {
     init,
     getLocations,
     getLocationOfUser,
-    chooseNearestLocation
+    chooseNearestLocation,
+    setCenter
   }
 }

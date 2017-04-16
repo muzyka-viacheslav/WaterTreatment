@@ -2,6 +2,7 @@ export class MapPageController {
   constructor(map, $scope) {
     'ngInject';
     this.$scope = $scope;
+    this.map = map;
     this.$scope.activeLocation = {};
     $scope.objects = [];
     map.getLocations()

@@ -21,7 +21,7 @@
   <div class="other-header">
     All objects:
   </div>
-  <div class="object" ng-repeat="object in objects | orderBy: 'distance'">
+  <div class="object" ng-repeat="object in objects | orderBy: 'distance'" ng-click="ctrl.map.setCenter(object);">
     <div class="title">Name: </div>
     <div class="value"><span class="name">{{object.name}},</span> <span class="title">distance: </span>
       <span ng-if="object.distance">{{object.distance | number: 1}} km.</span>

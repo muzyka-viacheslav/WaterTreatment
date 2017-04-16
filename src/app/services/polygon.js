@@ -15,7 +15,7 @@ export class PolygonsService {
         lng: item[0],
         lat: item[1]
       }));
-      console.info(`Array (szie: ${result.length}) parsing: ${+new Date()} ${+begin}.`);
+      console.info(`Array (size: ${result.length}) parsing: ${+new Date()} ${+begin}.`);
       deferred.resolve(result);
     }, response => {
       console.dir(response);
