@@ -2,19 +2,23 @@
   <form action="" name="addObjectForm" onsubmit="event.preventDefault();">
     <div class="input-box">
       <label for="name">Name:</label>
-      <input type="text" id="name" class="form-control" ng-model="ctrl.newObject.name">
+      <input type="text" id="name" class="form-control" ng-model="ctrl.newObject.name" required="true">
     </div>
     <div class="input-box">
       <label for="lat">Latitude:</label>
-      <input type="text" id="lat" class="form-control" ng-model="ctrl.newObject.lat">
+      <input type="text" id="lat" class="form-control" ng-model="ctrl.newObject.lat" required="true">
     </div>
     <div class="input-box">
       <label for="lng">Longitude:</label>
-      <input type="text" id="lng" class="form-control" ng-model="ctrl.newObject.lng">
+      <input type="text" id="lng" class="form-control" ng-model="ctrl.newObject.lng" required="true">
+    </div>
+    <div class="input-box">
+      <label for="id">ID (<a href="http://nominatim.openstreetmap.org/" target="_blank">link to get id</a>):</label>
+      <input type="text" id="id" class="form-control" ng-model="ctrl.newObject.id" required="true">
     </div>
     <div class="input-box">
       <label for="desc">Description:</label>
-      <div text-angular ng-model="ctrl.newObject.desc" id="desc"></div>
+      <div text-angular ng-model="ctrl.newObject.desc" id="desc" required="true"></div>
     </div>
     <div class="imagesInputContainer">
       <label for="">Images:</label>
@@ -29,7 +33,7 @@
       </div>
     </div>
     <div class="input-box">
-      <button class="btn btn-default" ng-click="ctrl.addObject()">Save Object</button>
+      <button class="btn btn-default" ng-click="ctrl.addObject()" ng-disabled="addObjectForm.$invalid">Save Object</button>
     </div>
   </form>
 </div>

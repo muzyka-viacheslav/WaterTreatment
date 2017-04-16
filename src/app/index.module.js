@@ -15,6 +15,7 @@ import { AddObjectController } from './addObject/addObject.controller';
 
 import { DiplomApi } from './services/api';
 import { MapService } from './services/map';
+import { PolygonsService } from './services/polygon';
 
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 
@@ -33,4 +34,5 @@ angular.module('waterTreatment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSaniti
   .controller('AddObjectController', AddObjectController)
   .service('api', DiplomApi)
   .service('map', MapService)
+  .service('polygon', PolygonsService)
   .directive('waterNavbar', NavbarDirective);

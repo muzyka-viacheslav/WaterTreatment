@@ -1,4 +1,4 @@
-export function MapService(api, $q) {
+export function MapService(api, $q, polygon) {
   'ngInject';
   let userCoords = {};
   let deferLocation = $q.defer();
@@ -14,19 +14,30 @@ export function MapService(api, $q) {
     scope[activeLocationScopeVariable] = nearestLocation;
     var infowindow = new google.maps.InfoWindow, marker;
     angular.forEach(markers, location => {
+      polygon
+        .get(`${location.id}`)
+        .then(response => {
+          var town = new google.maps.Polygon({
+            paths: response,
+            strokeColor: '#5AADBB',
+            strokeOpacity: 0.8,
+            strokeWeight: 3,
+            fillColor: '#5AADBB',
+            fillOpacity: 0.35
+          });
+          town.setMap(map);
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(location.lat, location.lng),
+            map: map
+          });
 
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(location.lat, location.lng),
-        map: map
-      });
+          var markerHtml = ``;
 
-      var markerHtml = ``;
+          town.addListener('click', function (event) {
+            scope[activeLocationScopeVariable] = location;
+            scope.$digest();
 
-      google.maps.event.addListener(marker, 'click', (function (marker) {
-        return function () {
-          scope[activeLocationScopeVariable] = location;
-          scope.$digest();
-          markerHtml = `<div class="marker-content">
+            markerHtml = `<div class="marker-content">
                           <div class="marker-name">
                             <span>Name: </span><strong>${location.name}</strong>
                           </div>
@@ -34,10 +45,12 @@ export function MapService(api, $q) {
                             <span>Distance: </span><strong>${Math.round(location.distance)} km.</strong>
                           </div>
                         </div>`;
-          infowindow.setContent(markerHtml);
-          infowindow.open(map, marker);
-        }
-      })(marker));
+            infowindow.setContent(markerHtml);
+            infowindow.setPosition(event.latLng);
+            infowindow.open(map, marker);
+          });
+
+        });
     })
   }
 

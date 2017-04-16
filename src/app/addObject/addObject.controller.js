@@ -38,7 +38,8 @@ export class AddObjectController {
       lat: this.newObject.lat,
       lng: this.newObject.lng,
       desc: this.newObject.desc,
-      images: this.newObject.images
+      images: this.newObject.images,
+      id: this.newObject.id
     };
     if (this.$stateParams.id) {
       insertedObject.id = this.$stateParams.id;
