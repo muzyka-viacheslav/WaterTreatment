@@ -106,7 +106,7 @@ export function MapService(api, $q, polygon) {
     return locations.reduce((prev, current) => {
       current.distance = calculateDistance(current.lat, current.lng, currentCoords.lat, currentCoords.long);
       current.location = current;
-      if (prev.long && prev.lat) {
+      if (prev.lng && prev.lat) {
         if (current.distance < prev.distance) {
           return current;
         } else {
