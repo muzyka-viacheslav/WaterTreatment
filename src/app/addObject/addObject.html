@@ -18,12 +18,13 @@
     </div>
     <div class="input-box">
       <label for="diseases">Болезни, что лечит вода:</label>
-      <select multiple type="text"
+      <select multiple="multiple" type="text"
               id="diseases"
               class="form-control"
               ng-model="ctrl.newObject.diseases"
-              ng-options="item._id as item.name for item in ctrl.diseases track by item._id"
-              required="true"></select>
+              required="true">
+        <option ng-value="item._id" ng-repeat="item in ctrl.diseases">{{item.name}}</option>
+      </select>
     </div>
     <div class="input-box">
       <label for="existTreatAgency">Есть ли рядом лечебные учреждение: (если да, то количество)</label>

@@ -9,7 +9,7 @@
     </div>
   </div>
   <div ng-bind-html="$sce.trustAsHtml(ctrl.object.desc)" class="object-desc"></div>
-  <div class="edit-button-box">
+  <div class="edit-button-box" ng-if="ctrl.$scope.$root.authenticated">
     <div class="btn btn-default" ui-sref="addObject({id: ctrl.object._id})">Edit Object</div>
   </div>
 </div>
