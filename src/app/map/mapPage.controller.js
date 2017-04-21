@@ -17,4 +17,8 @@ export class MapPageController {
           });
       });
   }
+  handleLocationClick(obj) {
+    this.map.setCenter(obj);
+    this.$scope.activeLocation = obj;
+  }
 }
