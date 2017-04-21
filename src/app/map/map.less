@@ -79,6 +79,10 @@
     }
     .name {
       min-width: 450px;
+      max-width: 80vw;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
   &:hover, &.active {
@@ -105,5 +109,21 @@
 @media (max-width: 500px) {
   .map-container #map {
     height: 80vh;
+  }
+  li.last {
+    position: relative !important;
+  }
+  .about-container .row .techs {
+    width: calc(~"100vw - 30px");
+  }
+  .object .value {
+    flex-direction: column;
+    .name {
+      min-width: 100px;
+      max-width: calc(~"100vw - 100px");
+    }
+  }
+  .map-container .selected-marker .value {
+    font-size: 12px;
   }
 }
