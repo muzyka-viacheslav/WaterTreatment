@@ -1,11 +1,16 @@
-export function MapService(api, $q) {
+export function MapService(api, $q, polygon) {
   'ngInject';
   let userCoords = {};
   let deferLocation = $q.defer();
+  let map;
+
+  function setCenter(location) {
+    map.setCenter({lat: parseFloat(location.lat), lng: parseFloat(location.lng)});
+  }
 
   function init(markers, nearestLocation, mapId, scope, activeLocationScopeVariable) {
-    var map = new google.maps.Map(document.getElementById(mapId), {
-      zoom: 10,
+    map = new google.maps.Map(document.getElementById(mapId), {
+      zoom: 12,
       center: {
         lat: parseFloat(nearestLocation.lat),
         lng: parseFloat(nearestLocation.lng)
@@ -14,20 +19,43 @@ export function MapService(api, $q) {
     scope[activeLocationScopeVariable] = nearestLocation;
     var infowindow = new google.maps.InfoWindow, marker;
     angular.forEach(markers, location => {
+      polygon
+        .get(`${location.cityId}`)
+        .then(response => {
+          var town = new google.maps.Polygon({
+            paths: response,
+            strokeColor: '#5AADBB',
+            strokeOpacity: 0.8,
+            strokeWeight: 3,
+            fillColor: '#5AADBB',
+            fillOpacity: 0.35
+          });
+          town.setMap(map);
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(location.lat, location.lng),
+            map: map
+          });
 
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(location.lat, location.lng),
-        map: map
-      });
+          var markerHtml = ``;
 
-      google.maps.event.addListener(marker, 'click', (function(marker) {
-        return function() {
-          scope[activeLocationScopeVariable] = location;
-          scope.$digest();
-          infowindow.setContent(location.name);
-          infowindow.open(map, marker);
-        }
-      })(marker));
+          town.addListener('click', function (event) {
+            scope[activeLocationScopeVariable] = location;
+            scope.$digest();
+
+            markerHtml = `<div class="marker-content">
+                          <div class="marker-name">
+                            <span>Name: </span><strong>${location.name}</strong>
+                          </div>
+                          <div class="marker-distance">
+                            <span>Distance: </span><strong>${Math.round(location.distance)} km.</strong>
+                          </div>
+                        </div>`;
+            infowindow.setContent(markerHtml);
+            infowindow.setPosition(event.latLng);
+            infowindow.open(map, marker);
+          });
+
+        });
     })
   }
 
@@ -35,7 +63,7 @@ export function MapService(api, $q) {
     let defer = $q.defer();
 
     api
-      .get(`forestObjects`)
+      .get(`waterObjects`)
       .then(response => {
         defer.resolve(response.data);
       }, response => {
@@ -78,7 +106,7 @@ export function MapService(api, $q) {
     return locations.reduce((prev, current) => {
       current.distance = calculateDistance(current.lat, current.lng, currentCoords.lat, currentCoords.long);
       current.location = current;
-      if (prev.long && prev.lat) {
+      if (prev.lng && prev.lat) {
         if (current.distance < prev.distance) {
           return current;
         } else {
@@ -109,6 +137,7 @@ export function MapService(api, $q) {
     init,
     getLocations,
     getLocationOfUser,
-    chooseNearestLocation
+    chooseNearestLocation,
+    setCenter
   }
 }

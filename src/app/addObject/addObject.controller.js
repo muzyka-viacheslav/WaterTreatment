@@ -25,7 +25,7 @@ export class AddObjectController {
 
   getData() {
     this.api
-      .get(`forestObjects?id=${this.$stateParams.id}`)
+      .get(`waterObjects?id=${this.$stateParams.id}`)
       .then(response => {
         this.newObject = response.data;
       })
@@ -38,13 +38,14 @@ export class AddObjectController {
       lat: this.newObject.lat,
       lng: this.newObject.lng,
       desc: this.newObject.desc,
-      images: this.newObject.images
+      images: this.newObject.images,
+      cityId: this.newObject.cityId
     };
     if (this.$stateParams.id) {
       insertedObject.id = this.$stateParams.id;
     }
     this.api
-      .post(`forestObjects`, insertedObject)
+      .post(`waterObjects`, insertedObject)
       .then(() => {
         this.$scope.animation = false;
       })

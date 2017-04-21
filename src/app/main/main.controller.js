@@ -3,7 +3,7 @@ export class MainController {
     'ngInject';
     this.items = [
       {
-        val: 'Allow add new objects'
+        val: 'Add new objects'
       },
       {
         val: 'See objects on the map'
@@ -16,6 +16,9 @@ export class MainController {
       },
       {
         val: 'Calculating the distance between your location and object'
+      },
+      {
+        val: 'Mobile integration'
       }
     ];
   }

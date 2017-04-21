@@ -17,7 +17,7 @@ export class WaterObjectController {
   getData() {
     this.$scope.animation = true;
     this.api
-      .get(`forestObjects?id=${this.$stateParams.id}`)
+      .get(`waterObjects?id=${this.$stateParams.id}`)
       .then(response => {
         this.object = response.data;
         this.$scope.bindHTML = this.$scope.$sce.trustAsHtml(this.object.desc);

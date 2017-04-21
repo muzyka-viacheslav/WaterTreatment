@@ -2,6 +2,7 @@ export class MapPageController {
   constructor(map, $scope) {
     'ngInject';
     this.$scope = $scope;
+    this.map = map;
     this.$scope.activeLocation = {};
     $scope.objects = [];
     map.getLocations()
@@ -15,5 +16,9 @@ export class MapPageController {
             map.init(response, $scope.objects[0], 'map', $scope, 'activeLocation');
           });
       });
+  }
+  handleLocationClick(obj) {
+    this.map.setCenter(obj);
+    this.$scope.activeLocation = obj;
   }
 }
