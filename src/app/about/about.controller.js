@@ -15,6 +15,12 @@ export class AboutController {
         'logo': 'nodejs.png'
       },
       {
+        'title': 'Express.js',
+        'url': 'http://expressjs.com/',
+        'description': 'Fast, unopinionated, minimalist web framework for Node.js',
+        'logo': 'Expressjs.png'
+      },
+      {
         'title': 'BrowserSync',
         'url': 'http://browsersync.io/',
         'description': 'Time-saving synchronised browser testing.',
@@ -59,24 +65,24 @@ export class AboutController {
     ];
     this.aboutItems = [
       {
-        title: 'Author',
-        value: 'Muzyka Viacheslav'
+        title: 'Автор',
+        value: 'Музика Вячеслав'
       },
       {
-        title: 'Theme',
-        value: 'Water treatment in Ukraine'
+        title: 'Тема',
+        value: 'Лікувальні води України'
       },
       {
-        title: 'Group',
+        title: 'Група',
         value: 'TM-32'
       },
       {
-        title: 'University',
-        value: 'NTUU "KPI"'
+        title: 'Університет',
+        value: 'НТУУ "КПІ"'
       },
       {
-        title: 'Mentor',
-        value: 'Shulzhenko Oleg Feodosiyovich'
+        title: 'Дипломний керівник',
+        value: 'Шульженко Олег Феодосійович'
       }
     ];
   }

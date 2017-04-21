@@ -23,9 +23,9 @@ class NavbarController {
     this.api = api;
     this.user = {};
     this.loginError = false;
-    var tryLogin = localStorage.getItem('waterTreatmentLogin');
-    var tryPassword = localStorage.getItem('waterTreatmentPassword');
-    if (tryLogin && tryPassword) {
+    this.user.login = localStorage.getItem('waterTreatmentLogin');
+    this.user.password = localStorage.getItem('waterTreatmentPassword');
+    if (this.user.login && this.user.password) {
       this.login();
     }
   }
@@ -54,5 +54,7 @@ class NavbarController {
     this.$scope.$root.authenticated = false;
     this.user = {};
     this.$state.go('home');
+    localStorage.removeItem('waterTreatmentLogin');
+    localStorage.removeItem('waterTreatmentPassword');
   }
 }

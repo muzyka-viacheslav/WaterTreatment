@@ -2,14 +2,15 @@
   <select name="diseases" id="diseases"
           class="form-control"
           ng-model="ctrl.chosenDisease"
-          ng-change="ctrl.sortObjects()"
-          ng-options="item._id as item.name for item in ctrl.diseases track by $index"></select>
+          ng-change="ctrl.sortObjects()">
+    <option ng-value="item._id" ng-repeat="item in ctrl.diseases">{{item.name}}</option>
+  </select>
 </div>
 <div class="map-container">
   <div id="map"></div>
   <div class="selected-marker" ng-if="activeLocation.name">
     <div class="object-name">
-      <div class="title">Name: </div>
+      <div class="title">Назва: </div>
       <div class="value">{{activeLocation.name}}</div>
     </div>
     <div class="coordinates">
@@ -17,22 +18,32 @@
       <div><div class="title">Longitude: </div><div class="value">{{activeLocation.lng}}</div></div>
     </div>
     <div>
-      <div class="title">Distance from your current location:</div>
-      <div class="value" ng-if="activeLocation.distance">{{activeLocation.distance | number: 1}} km.</div>
-      <div class="value" ng-if="!activeLocation.distance">There is no access to your location due to issue with your browser.</div>
+      <div class="title">Відстань:</div>
+      <div class="value" ng-if="activeLocation.distance">{{activeLocation.distance | number: 1}} км.</div>
+      <div class="value" ng-if="!activeLocation.distance">Ваш браузер не може дати доступ до Вашого місцезнаходження.</div>
     </div>
-    <div ui-sref="waterObject({id: activeLocation._id})" class="link-to-object">Go to object</div>
+    <div>
+      <div class="title">Хвороби, що лікує це джерело:</div>
+      <div class="value" ng-if="activeLocation.distance"><span ng-repeat="item in activeLocation.diseaseObject">{{item.name}}<span ng-if="!$last">, </span></span></div>
+    </div>
+    <div ui-sref="waterObject({id: activeLocation._id})" class="link-to-object">Перейти до об'єкту</div>
+    <div ui-sref="addObject({id: activeLocation._id})" class="link-to-object" ng-if="ctrl.$scope.$root.authenticated">Редагувати об'єкт</div>
   </div>
 </div>
 <div class="other-container">
   <div class="other-header">
-    All objects:
+    Всі об'єкти:
   </div>
-  <div class="object" ng-repeat="object in objects | orderBy: 'distance'" ng-click="ctrl.handleLocationClick(object);">
-    <div class="title">Name: </div>
-    <div class="value"><span class="name">{{object.name}},</span> <span class="title">distance: </span>
-      <span ng-if="object.distance">{{object.distance | number: 1}} km.</span>
-      <span ng-if="!object.distance">unknown</span>
+  <div class="object"
+       ng-repeat="object in objects | orderBy: 'distance'"
+       ng-class="{'active': activeLocation._id == object._id}"
+       ng-click="ctrl.handleLocationClick(object);">
+    <div class="title">Назва: </div>
+    <div class="value"><span class="name">{{object.name}},</span> <span class="title">відстань: </span>
+      <span ng-if="object.distance" class="distance">{{object.distance | number: 1}} км.</span>
+      <span ng-if="!object.distance" class="distance">невідомо</span>
+      <span class="title"> хвороби: </span> <span ng-repeat="item in object.diseaseObject" class="margin">{{item.name}}</span>
+      <span class="title"> лікувальні комлпекси поруч: </span> <span>{{object.existTreatAgency}}</span>
     </div>
   </div>
 </div>

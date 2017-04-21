@@ -1,7 +1,7 @@
 <div class="add-object-container">
   <form action="" name="addObjectForm" onsubmit="event.preventDefault();">
     <div class="input-box">
-      <label for="name">Название:</label>
+      <label for="name">Назва:</label>
       <input type="text" id="name" class="form-control" ng-model="ctrl.newObject.name" required="true">
     </div>
     <div class="input-box">
@@ -13,11 +13,11 @@
       <input type="text" id="lng" class="form-control" ng-model="ctrl.newObject.lng" required="true">
     </div>
     <div class="input-box">
-      <label for="id">ID (<a href="http://nominatim.openstreetmap.org/" target="_blank">ссылка для получения id</a>):</label>
+      <label for="id">ID (<a href="http://nominatim.openstreetmap.org/" target="_blank">посилання для отримання id</a>):</label>
       <input type="text" id="id" class="form-control" ng-model="ctrl.newObject.cityId" required="true">
     </div>
     <div class="input-box">
-      <label for="diseases">Болезни, что лечит вода:</label>
+      <label for="diseases">Хвороби, що лікує вода:</label>
       <select multiple="multiple" type="text"
               id="diseases"
               class="form-control"
@@ -27,15 +27,15 @@
       </select>
     </div>
     <div class="input-box">
-      <label for="existTreatAgency">Есть ли рядом лечебные учреждение: (если да, то количество)</label>
+      <label for="existTreatAgency">Чи є поруч лікувальні заклади? (вказати кількість, якщо немає - 0)</label>
       <input type="text" id="existTreatAgency" class="form-control" ng-model="ctrl.newObject.existTreatAgency" required="true">
     </div>
     <div class="input-box">
-      <label for="desc">Описание:</label>
+      <label for="desc">Опис:</label>
       <div text-angular ng-model="ctrl.newObject.desc" id="desc" required="true"></div>
     </div>
     <div class="imagesInputContainer">
-      <label for="">Ссылки на картинки:</label>
+      <label for="">Посилання на зображення:</label>
       <div class="image-input-box" ng-repeat="img in ctrl.newObject.images track by $index">
         <div class="input-box">
           <input type="text" ng-model="img.link" class="form-control">
@@ -43,11 +43,12 @@
         </div>
       </div>
       <div class="add-image" ng-click="ctrl.addImage()">
-        <i class="fa fa-plus-square" aria-hidden="true"></i> <span>Добавить</span>
+        <i class="fa fa-plus-square" aria-hidden="true"></i> <span>Додати</span>
       </div>
     </div>
     <div class="input-box">
-      <button class="btn btn-default" ng-click="ctrl.addObject()" ng-disabled="addObjectForm.$invalid">Сохранить</button>
+      <button class="btn btn-default" ng-click="ctrl.addObject()" ng-disabled="addObjectForm.$invalid">Зберегти</button>
+      <button class="btn btn-default" ng-click="ctrl.resetState()" ng-if="ctrl.canReset">Додати ще</button>
     </div>
   </form>
 </div>

@@ -54,6 +54,12 @@
   display: flex;
   background-color: #fff;
   transition: all 0.3s ease;
+  .distance {
+    min-width: 80px;
+  }
+  .margin {
+    margin-right: 10px;
+  }
   .title {
     padding: 10px 15px;
     font-size: 14px;
@@ -75,7 +81,7 @@
       min-width: 450px;
     }
   }
-  &:hover {
+  &:hover, &.active {
     font-size: 18px;
     background-color: darken(#fff, 10%);
   }
@@ -91,7 +97,7 @@
   div {
     display: flex;
     span {
-      min-width: 80px;
+      min-width: 200px;
     }
   }
 }

@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" ui-sref="home">
-        <i class="fa fa-tint" aria-hidden="true"></i> Water Treatment
+        <i class="fa fa-tint" aria-hidden="true"></i> Лікувальні води України
       </a>
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6">
         <span class="icon-bar"></span>
@@ -13,21 +13,26 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li ng-class="{'active': vm.$state.current.name == 'home'}"><a ui-sref="home">Home</a></li>
-        <li ng-class="{'active': vm.$state.current.name == 'about'}"><a ui-sref="about">About</a></li>
-        <li ng-class="{'active': vm.$state.current.name == 'map'}"><a ui-sref="map">Map</a></li>
-        <li ng-class="{'active': vm.$state.current.name == 'addObject'}"><a ui-sref="addObject" ng-if="vm.$scope.$root.authenticated">Add Object</a></li>
+        <li ng-class="{'active': vm.$state.current.name == 'home'}"><a ui-sref="home">Головна</a></li>
+        <li ng-class="{'active': vm.$state.current.name == 'about'}"><a ui-sref="about">Інфо</a></li>
+        <li ng-class="{'active': vm.$state.current.name == 'map'}"><a ui-sref="map">Карта</a></li>
+        <li ng-class="{'active': vm.$state.current.name == 'addObject'}"><a ui-sref="addObject" ng-if="vm.$scope.$root.authenticated">Додати об'єкт</a></li>
         <li>
           <a onclick="event.preventDefault();"
              href="#"
              data-toggle="modal"
              data-target="#loginModal"
-             ng-if="!vm.$scope.$root.authenticated">Login</a>
-          <a onclick="event.preventDefault();"
-             ng-click="vm.logout()"
-             ng-if="vm.$scope.$root.authenticated == true">Log out</a>
+             ng-if="!vm.$scope.$root.authenticated"><i class="glyphicon glyphicon-log-in" style="margin-right: 10px;"></i>Авторизуватися</a>
+
         </li>
-        <li class="last"><a>{{vm.user.name}}</a></li>
+        <li class="last">
+          <a>
+            <span ng-click="vm.logout()"
+                  style="margin-right: 20px;"
+                  ng-if="vm.$scope.$root.authenticated == true"><i class="glyphicon glyphicon-log-out" style="margin-right: 10px;"></i>Log out</span>
+            <span>{{vm.user.name}}</span>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

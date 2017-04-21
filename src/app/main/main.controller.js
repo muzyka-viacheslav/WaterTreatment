@@ -3,22 +3,22 @@ export class MainController {
     'ngInject';
     this.items = [
       {
-        val: 'Add new objects'
+        val: "Додавати нові об'єкти"
       },
       {
-        val: 'See objects on the map'
+        val: "Переглядати об'єкти на карті"
       },
       {
-        val: 'Edit object'
+        val: "Змінювати об'єкти"
       },
       {
-        val: 'Calculating the nearest object to your location'
+        val: "Розраховувати найближчий об'єкт"
       },
       {
-        val: 'Calculating the distance between your location and object'
+        val: "Розраховувати відстань від поточного місцяположення до об'єкту"
       },
       {
-        val: 'Mobile integration'
+        val: 'Мобільна інтеграція'
       }
     ];
   }

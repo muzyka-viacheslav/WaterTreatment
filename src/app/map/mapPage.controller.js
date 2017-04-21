@@ -33,7 +33,7 @@ export class MapPageController {
   }
 
   sortObjects() {
-
+    this.$scope.objects = this.$scope.allObjects.filter(x => x.diseases.find(x => x == this.chosenDisease));
   }
 
 }

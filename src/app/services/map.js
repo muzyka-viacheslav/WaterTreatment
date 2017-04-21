@@ -16,6 +16,7 @@ export function MapService(api, $q, polygon) {
         lng: parseFloat(nearestLocation.lng)
       }
     });
+    scope.allObjects = angular.copy(markers);
     scope[activeLocationScopeVariable] = nearestLocation;
     var infowindow = new google.maps.InfoWindow, marker;
     angular.forEach(markers, location => {
@@ -41,13 +42,25 @@ export function MapService(api, $q, polygon) {
           town.addListener('click', function (event) {
             scope[activeLocationScopeVariable] = location;
             scope.$digest();
-
+            var diseases = '';
+            location.diseaseObject.forEach(function (item, key) {
+              diseases += item.name;
+              if (key != location.diseaseObject.length - 1) {
+                diseases += ', ';
+              }
+            });
             markerHtml = `<div class="marker-content">
                           <div class="marker-name">
-                            <span>Name: </span><strong>${location.name}</strong>
+                            <span>Назва: </span><strong>${location.name}</strong>
                           </div>
                           <div class="marker-distance">
-                            <span>Distance: </span><strong>${Math.round(location.distance)} km.</strong>
+                            <span>Відстань: </span><strong>${Math.round(location.distance)} km.</strong>
+                          </div>
+                          <div class="marker-name">
+                            <span>Хвороби, що лікуються: </span><strong>${diseases}</strong>
+                          </div>
+                          <div class="marker-name">
+                            <span>Кількість лікувальних закладів: </span><strong>${location.existTreatAgency}</strong>
                           </div>
                         </div>`;
             infowindow.setContent(markerHtml);

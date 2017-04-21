@@ -7,10 +7,7 @@ export class AddObjectController {
     this.$stateParams = $stateParams;
     this.emptyLink = {link: 'http://example.com/img.png'};
     this.getDiseases();
-    this.newObject = {
-      images: [this.emptyLink]
-    };
-
+    this.resetState();
     if ($stateParams.id) {
       this.getData();
     }
@@ -41,6 +38,12 @@ export class AddObjectController {
       })
   }
 
+  resetState() {
+    this.newObject = {
+      images: [this.emptyLink]
+    };
+  }
+
   addObject() {
     this.$scope.animation = true;
     let insertedObject = {
@@ -55,10 +58,13 @@ export class AddObjectController {
     };
     if (this.$stateParams.id) {
       insertedObject.id = this.$stateParams.id;
+    } else {
+      this.canReset = true;
     }
     this.api
       .post(`waterObjects`, insertedObject)
       .then(() => {
+
         this.$scope.animation = false;
       })
   }
