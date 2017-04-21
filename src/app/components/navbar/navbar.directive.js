@@ -57,4 +57,13 @@ class NavbarController {
     localStorage.removeItem('waterTreatmentLogin');
     localStorage.removeItem('waterTreatmentPassword');
   }
+
+  addDisease() {
+    this.api
+      .post(`diseases`, {name: this.newDisease})
+      .then(() => {
+        $("#addDiseaseModal").modal('hide');
+        this.newDisease = '';
+      })
+  }
 }

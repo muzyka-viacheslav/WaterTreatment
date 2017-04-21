@@ -1,4 +1,5 @@
 <div class="select-for-diseases">
+  <label for="diseases">Сортувати за хворобою: </label>
   <select name="diseases" id="diseases"
           class="form-control"
           ng-model="ctrl.chosenDisease"
@@ -42,7 +43,7 @@
     <div class="value"><span class="name">{{object.name}},</span> <span class="title">відстань: </span>
       <span ng-if="object.distance" class="distance">{{object.distance | number: 1}} км.</span>
       <span ng-if="!object.distance" class="distance">невідомо</span>
-      <span class="title"> хвороби: </span> <span ng-repeat="item in object.diseaseObject" class="margin">{{item.name}}</span>
+      <span class="title"> хвороби: </span> <span ng-repeat="item in object.diseaseObject" class="margin">{{item.name}}<span>, </span></span>
       <span class="title"> лікувальні комлпекси поруч: </span> <span>{{object.existTreatAgency}}</span>
     </div>
   </div>
