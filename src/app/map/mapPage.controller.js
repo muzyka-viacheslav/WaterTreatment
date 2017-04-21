@@ -1,10 +1,12 @@
 export class MapPageController {
-  constructor(map, $scope) {
+  constructor(map, $scope, api) {
     'ngInject';
     this.$scope = $scope;
     this.map = map;
+    this.api = api;
     this.$scope.activeLocation = {};
     $scope.objects = [];
+    this.getDiseases();
     map.getLocations()
       .then(response => {
         $scope.objects = response;
@@ -21,4 +23,17 @@ export class MapPageController {
     this.map.setCenter(obj);
     this.$scope.activeLocation = obj;
   }
+
+  getDiseases() {
+    this.api
+      .get(`diseases`)
+      .then(response => {
+        this.diseases = response.data;
+      })
+  }
+
+  sortObjects() {
+
+  }
+
 }

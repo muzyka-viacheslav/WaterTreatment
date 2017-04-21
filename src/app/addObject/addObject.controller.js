@@ -6,6 +6,7 @@ export class AddObjectController {
     this.api = api;
     this.$stateParams = $stateParams;
     this.emptyLink = {link: 'http://example.com/img.png'};
+    this.getDiseases();
     this.newObject = {
       images: [this.emptyLink]
     };
@@ -31,6 +32,15 @@ export class AddObjectController {
       })
   }
 
+
+  getDiseases() {
+    this.api
+      .get(`diseases`)
+      .then(response => {
+        this.diseases = response.data;
+      })
+  }
+
   addObject() {
     this.$scope.animation = true;
     let insertedObject = {
@@ -39,7 +49,9 @@ export class AddObjectController {
       lng: this.newObject.lng,
       desc: this.newObject.desc,
       images: this.newObject.images,
-      cityId: this.newObject.cityId
+      cityId: this.newObject.cityId,
+      diseases: this.newObject.diseases,
+      existTreatAgency: this.newObject.existTreatAgency
     };
     if (this.$stateParams.id) {
       insertedObject.id = this.$stateParams.id;

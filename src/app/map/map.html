@@ -1,3 +1,10 @@
+<div class="select-for-diseases">
+  <select name="diseases" id="diseases"
+          class="form-control"
+          ng-model="ctrl.chosenDisease"
+          ng-change="ctrl.sortObjects()"
+          ng-options="item._id as item.name for item in ctrl.diseases track by $index"></select>
+</div>
 <div class="map-container">
   <div id="map"></div>
   <div class="selected-marker" ng-if="activeLocation.name">
