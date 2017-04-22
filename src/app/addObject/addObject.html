@@ -26,7 +26,9 @@
     </div>
     <div class="input-box">
       <label for="id">ID Області(<a href="http://nominatim.openstreetmap.org/" target="_blank">link to get id</a>):</label>
-      <input type="text" id="id" class="form-control" ng-model="ctrl.newObject.cityId" required="true">
+      <select name="" id="id" ng-model="ctrl.newObject.cityId" class="form-control" required="true">
+        <option ng-value="item.cityId" ng-repeat="item in ctrl.regions">{{item.name}}</option>
+      </select>
     </div>
     <div class="input-box">
       <label for="desc">Description:</label>

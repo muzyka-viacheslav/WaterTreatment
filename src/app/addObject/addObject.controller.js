@@ -13,6 +13,7 @@ export class AddObjectController {
     if ($stateParams.id) {
       this.getData();
     }
+    this.getRegions();
   }
 
   addImage() {
@@ -52,6 +53,13 @@ export class AddObjectController {
       .then(() => {
         this.$scope.animation = false;
       })
+  }
+  getRegions() {
+    this.api
+      .get(`regions`)
+      .then(response => {
+        this.regions = response.data;
+      });
   }
 
 }
