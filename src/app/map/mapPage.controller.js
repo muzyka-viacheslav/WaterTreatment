@@ -10,17 +10,26 @@ export class MapPageController {
       lat: '50.4020865'
     };
     this.getRegions();
+    this.nullStats();
     this.chosenRegion = {};
     this.getData(this.def);
     this.$scope.activeLocation = {};
     $scope.objects = [];
   }
 
+  nullStats() {
+    this.plantSum = 0;
+    this.reforest = 0;
+    this.eventLogging = 0;
+  }
+
   sortObjects() {
+    this.nullStats();
     var region = this.regions.find(x => x._id == this.chosenRegion);
     this.map.clearMarkers(this.$scope.objects.length);
     this.$scope.objects = this.$scope.allObjects.filter(x => x.cityId == region._id);
     this.getData(region, true);
+    this.calculateStats(this.$scope.objects);
   }
 
   getData(obj, reset) {
@@ -36,6 +45,14 @@ export class MapPageController {
             this.map.init(response, this.$scope.objects[0], 'map', this.$scope, 'activeLocation', obj, reset);
           });
       });
+  }
+
+  calculateStats(objs) {
+    angular.forEach(objs, item => {
+      this.plantSum += item.forestPlanting;
+      this.reforest += item.reforestation;
+      this.eventLogging += item.eventLogging;
+    });
   }
 
   getRegions() {

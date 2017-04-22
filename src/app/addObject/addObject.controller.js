@@ -26,7 +26,7 @@ export class AddObjectController {
 
   getData() {
     this.api
-      .get(`waterObjects?id=${this.$stateParams.id}`)
+      .get(`forestObjects?id=${this.$stateParams.id}`)
       .then(response => {
         this.newObject = response.data;
       })
@@ -49,7 +49,7 @@ export class AddObjectController {
       insertedObject.id = this.$stateParams.id;
     }
     this.api
-      .post(`waterObjects`, insertedObject)
+      .post(`forestObjects`, insertedObject)
       .then(() => {
         this.$scope.animation = false;
       })
