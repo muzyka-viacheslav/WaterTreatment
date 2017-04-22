@@ -1,0 +1,6 @@
+<div class="legislation-container">
+  <div class="laws" ng-repeat="item in ctrl.laws">
+    <div class="name" ng-click="item.isCollapsed = !item.isCollapsed">{{item.name}}</div>
+    <div class="text" uib-collapse="item.isCollapsed"><div>{{item.text}}</div></div>
+  </div>
+</div>

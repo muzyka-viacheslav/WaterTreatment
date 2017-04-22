@@ -8,19 +8,56 @@ export function MapService(api, $q, polygon) {
     map.setCenter({lat: parseFloat(location.lat), lng: parseFloat(location.lng)});
   }
 
-  function init(markers, nearestLocation, mapId, scope, activeLocationScopeVariable) {
-    map = new google.maps.Map(document.getElementById(mapId), {
-      zoom: 12,
-      center: {
-        lat: parseFloat(nearestLocation.lat),
-        lng: parseFloat(nearestLocation.lng)
-      }
-    });
-    scope[activeLocationScopeVariable] = nearestLocation;
+  function init(markers, nearestLocation, mapId, scope, activeLocationScopeVariable, region, reset) {
+    setPolygon(region.cityId);
+    if (!reset) {
+      map = new google.maps.Map(document.getElementById(mapId), {
+        zoom: 8,
+        mapTypeId: 'terrain'
+      });
+    }
     var infowindow = new google.maps.InfoWindow, marker;
+    setCenter(region);
+    scope[activeLocationScopeVariable] = nearestLocation;
     angular.forEach(markers, location => {
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(location.lat, location.lng),
+          map: map
+        });
+
+        var markerHtml = ``;
+
+        marker.addListener('click', function (event) {
+          scope[activeLocationScopeVariable] = location;
+          scope.$digest();
+
+          markerHtml = `<div class="marker-content">
+                        <div class="marker-name">
+                          <span>Name: </span><strong>${location.name}</strong>
+                        </div>
+                        <div class="marker-distance">
+                          <span>Distance: </span><strong>${Math.round(location.distance)} km.</strong>
+                        </div>
+                        <div class="marker-distance">
+                          <span>Посадка лісу (га): </span><strong>${location.forestPlanting} km.</strong>
+                        </div>
+                        <div class="marker-distance">
+                          <span>Природне поновлення лісу (га): </span><strong>${location.reforestation} km.</strong>
+                        </div>
+                        <div class="marker-distance">
+                          <span>Проведення рубок (тис. м3): </span><strong>${location.eventLogging} km.</strong>
+                        </div>
+                      </div>`;
+          infowindow.setContent(markerHtml);
+          infowindow.setPosition(event.latLng);
+          infowindow.open(map, marker);
+        });
+    })
+  }
+
+  function setPolygon(id) {
       polygon
-        .get(`${location.cityId}`)
+        .get(`${id}`)
         .then(response => {
           var town = new google.maps.Polygon({
             paths: response,
@@ -31,39 +68,14 @@ export function MapService(api, $q, polygon) {
             fillOpacity: 0.35
           });
           town.setMap(map);
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(location.lat, location.lng),
-            map: map
-          });
-
-          var markerHtml = ``;
-
-          town.addListener('click', function (event) {
-            scope[activeLocationScopeVariable] = location;
-            scope.$digest();
-
-            markerHtml = `<div class="marker-content">
-                          <div class="marker-name">
-                            <span>Name: </span><strong>${location.name}</strong>
-                          </div>
-                          <div class="marker-distance">
-                            <span>Distance: </span><strong>${Math.round(location.distance)} km.</strong>
-                          </div>
-                        </div>`;
-            infowindow.setContent(markerHtml);
-            infowindow.setPosition(event.latLng);
-            infowindow.open(map, marker);
-          });
-
         });
-    })
   }
 
-  function getLocations() {
+  function getLocations(id) {
     let defer = $q.defer();
 
     api
-      .get(`waterObjects`)
+      .get(`forestObjects?id=${id}`)
       .then(response => {
         defer.resolve(response.data);
       }, response => {
@@ -138,6 +150,7 @@ export function MapService(api, $q, polygon) {
     getLocations,
     getLocationOfUser,
     chooseNearestLocation,
-    setCenter
+    setCenter,
+    setPolygon
   }
 }

@@ -19,6 +19,16 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controller: 'MapPageController',
       controllerAs: 'ctrl'
     })
+    .state('legislation', {
+      url: '/legislation',
+      templateUrl: 'app/legislation/legislation.html',
+      controller: 'LegislationController',
+      controllerAs: 'ctrl'
+    })
+    .state('control', {
+      url: '/control',
+      templateUrl: 'app/control/control.html'
+    })
     .state('addObject', {
       url: '/addObject?{id}',
       templateUrl: 'app/addObject/addObject.html',

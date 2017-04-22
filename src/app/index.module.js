@@ -12,6 +12,7 @@ import { WaterObjectController } from './waterObject/waterObject.controller';
 import { MapPageController } from './map/mapPage.controller';
 import { AboutController } from './about/about.controller';
 import { AddObjectController } from './addObject/addObject.controller';
+import { LegislationController } from './legislation/legislation.controller';
 
 import { DiplomApi } from './services/api';
 import { MapService } from './services/map';
@@ -32,6 +33,7 @@ angular.module('waterTreatment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSaniti
   .controller('MapPageController', MapPageController)
   .controller('AboutController', AboutController)
   .controller('AddObjectController', AddObjectController)
+  .controller('LegislationController', LegislationController)
   .service('api', DiplomApi)
   .service('map', MapService)
   .service('polygon', PolygonsService)
