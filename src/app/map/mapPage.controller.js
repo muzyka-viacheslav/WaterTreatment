@@ -5,7 +5,7 @@ export class MapPageController {
     this.api = api;
     this.map = map;
     this.def = {
-      cityId:'421866',
+      cityId:'71248',
       lng: '30.6146803128848',
       lat: '50.4020865'
     };
@@ -25,18 +25,16 @@ export class MapPageController {
 
   sortObjects() {
     this.nullStats();
-    var region = this.regions.find(x => x._id == this.chosenRegion);
+    this.chosenRegionObject = this.regions.find(x => x._id == this.chosenRegion);
     this.map.clearMarkers(this.$scope.objects.length);
-    this.$scope.objects = this.$scope.allObjects.filter(x => x.cityId == region._id);
-    this.getData(region, true);
-    this.calculateStats(this.$scope.objects);
+    this.getData(this.chosenRegionObject, true);
   }
 
   getData(obj, reset) {
     this.map.getLocations(obj.cityId)
       .then(response => {
         this.$scope.objects = response;
-        this.$scope.allObjects = response;
+        this.calculateStats(this.$scope.objects);
         this.map.getLocationOfUser()
           .then(responseUser => {
             let nearestLocation = this.map.chooseNearestLocation(response, responseUser);
@@ -49,9 +47,9 @@ export class MapPageController {
 
   calculateStats(objs) {
     angular.forEach(objs, item => {
-      this.plantSum += item.forestPlanting;
-      this.reforest += item.reforestation;
-      this.eventLogging += item.eventLogging;
+      this.plantSum += parseFloat(item.forestPlanting);
+      this.reforest += parseFloat(item.reforestation);
+      this.eventLogging += parseFloat(item.eventLogging);
     });
   }
 
