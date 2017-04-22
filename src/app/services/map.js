@@ -2,13 +2,14 @@ export function MapService(api, $q, polygon) {
   'ngInject';
   let userCoords = {};
   let deferLocation = $q.defer();
-  let map;
+  let map, town = new google.maps.Polygon({}), marker = new google.maps.InfoWindow;
 
   function setCenter(location) {
     map.setCenter({lat: parseFloat(location.lat), lng: parseFloat(location.lng)});
   }
 
   function init(markers, nearestLocation, mapId, scope, activeLocationScopeVariable, region, reset) {
+    clearPolygon();
     setPolygon(region.cityId);
     if (!reset) {
       map = new google.maps.Map(document.getElementById(mapId), {
@@ -16,11 +17,11 @@ export function MapService(api, $q, polygon) {
         mapTypeId: 'terrain'
       });
     }
-    var infowindow = new google.maps.InfoWindow, marker;
+    var infowindow = new google.maps.InfoWindow;
     setCenter(region);
     scope[activeLocationScopeVariable] = nearestLocation;
     angular.forEach(markers, location => {
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
           position: new google.maps.LatLng(location.lat, location.lng),
           map: map
         });
@@ -59,7 +60,7 @@ export function MapService(api, $q, polygon) {
       polygon
         .get(`${id}`)
         .then(response => {
-          var town = new google.maps.Polygon({
+          town = new google.maps.Polygon({
             paths: response,
             strokeColor: '#5AADBB',
             strokeOpacity: 0.8,
@@ -69,6 +70,16 @@ export function MapService(api, $q, polygon) {
           });
           town.setMap(map);
         });
+  }
+
+  function clearMarkers(amount) {
+    for (var i = 0; i < amount; i++) {
+      marker.setMap(null);
+    }
+  }
+
+  function clearPolygon() {
+    town.setMap(null);
   }
 
   function getLocations(id) {
@@ -151,6 +162,7 @@ export function MapService(api, $q, polygon) {
     getLocationOfUser,
     chooseNearestLocation,
     setCenter,
-    setPolygon
+    setPolygon,
+    clearMarkers
   }
 }

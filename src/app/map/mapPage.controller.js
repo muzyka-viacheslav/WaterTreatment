@@ -18,6 +18,7 @@ export class MapPageController {
 
   sortObjects() {
     var region = this.regions.find(x => x._id == this.chosenRegion);
+    this.map.clearMarkers(this.$scope.objects.length);
     this.$scope.objects = this.$scope.allObjects.filter(x => x.cityId == region._id);
     this.getData(region, true);
   }
