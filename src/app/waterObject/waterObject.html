@@ -9,6 +9,18 @@
     </div>
   </div>
   <div ng-bind-html="$sce.trustAsHtml(ctrl.object.desc)" class="object-desc"></div>
+  <div class="diseases-description-box">
+    <div class="diseases-header">Захворювання, що можуть бути вилікувані за допомогою цих вод: </div>
+    <div class="disease" ng-repeat="item in ctrl.object.diseaseObject"> - {{item.name}}</div>
+  </div>
+  <div class="diseases-description-box">
+    <div class="diseases-header">Кількість лікувальних комплексів: </div>
+    <div class="disease"> - {{ctrl.object.existTreatAgency}}</div>
+  </div>
+  <div class="diseases-description-box">
+    <div class="diseases-header">Місце розташування: </div>
+    <div class="disease"> - latitude: {{ctrl.object.lat}}, longitude: {{ctrl.object.lng}}</div>
+  </div>
   <div class="edit-button-box" ng-if="ctrl.$scope.$root.authenticated">
     <div class="btn btn-default" ui-sref="addObject({id: ctrl.object._id})">Редагувати</div>
   </div>

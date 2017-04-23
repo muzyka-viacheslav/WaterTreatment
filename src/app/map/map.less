@@ -54,6 +54,12 @@
   display: flex;
   background-color: #fff;
   transition: all 0.3s ease;
+  .diseases-box {
+    width: 800px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
   .distance {
     min-width: 80px;
   }
@@ -78,8 +84,8 @@
       margin-right: 10px;
     }
     .name {
-      min-width: 450px;
-      max-width: 80vw;
+      min-width: 400px;
+      max-width: 20vw;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -125,5 +131,9 @@
   }
   .map-container .selected-marker .value {
     font-size: 12px;
+  }
+
+  .object .diseases-box {
+    width: 200px;
   }
 }
