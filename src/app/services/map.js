@@ -40,13 +40,13 @@ export function MapService(api, $q, polygon) {
                           <span>Distance: </span><strong>${Math.round(location.distance)} km.</strong>
                         </div>
                         <div class="marker-distance">
-                          <span>Посадка лісу (га): </span><strong>${location.forestPlanting} km.</strong>
+                          <span>Посадка лісу (га): </span><strong>${location.forestPlanting} </strong>
                         </div>
                         <div class="marker-distance">
-                          <span>Природне поновлення лісу (га): </span><strong>${location.reforestation} km.</strong>
+                          <span>Природне поновлення лісу (га): </span><strong>${location.reforestation} </strong>
                         </div>
                         <div class="marker-distance">
-                          <span>Проведення рубок (тис. м3): </span><strong>${location.eventLogging} km.</strong>
+                          <span>Проведення рубок (тис. м3): </span><strong>${location.eventLogging} </strong>
                         </div>
                       </div>`;
           infowindow.setContent(markerHtml);

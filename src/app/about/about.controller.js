@@ -59,24 +59,24 @@ export class AboutController {
     ];
     this.aboutItems = [
       {
-        title: 'Author',
-        value: 'Muzyka Viacheslav'
+        title: 'Автор',
+        value: 'Новосядлий Денис'
       },
       {
-        title: 'Theme',
-        value: 'Water treatment in Ukraine'
+        title: 'Тема',
+        value: 'Моніторинг лісів України'
       },
       {
-        title: 'Group',
+        title: 'Група',
         value: 'TM-32'
       },
       {
-        title: 'University',
-        value: 'NTUU "KPI"'
+        title: 'Уніврситет',
+        value: 'НТУУ "КПІ"'
       },
       {
-        title: 'Mentor',
-        value: 'Shulzhenko Oleg Feodosiyovich'
+        title: 'Керівник',
+        value: 'Шульженко Олег Феодосієвич'
       }
     ];
   }

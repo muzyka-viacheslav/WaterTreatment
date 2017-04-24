@@ -17,6 +17,7 @@ import { LegislationController } from './legislation/legislation.controller';
 import { DiplomApi } from './services/api';
 import { MapService } from './services/map';
 import { PolygonsService } from './services/polygon';
+import { ControlCtrl } from './control/control.controller.js';
 
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 
@@ -34,6 +35,7 @@ angular.module('waterTreatment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSaniti
   .controller('AboutController', AboutController)
   .controller('AddObjectController', AddObjectController)
   .controller('LegislationController', LegislationController)
+  .controller('ControlCtrl', ControlCtrl)
   .service('api', DiplomApi)
   .service('map', MapService)
   .service('polygon', PolygonsService)

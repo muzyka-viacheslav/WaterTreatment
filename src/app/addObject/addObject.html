@@ -12,19 +12,19 @@
       <label for="lng">Longitude:</label>
       <input type="text" id="lng" class="form-control" ng-model="ctrl.newObject.lng" required="true">
     </div>
+        <div class="input-box">
+      <label for="reforestation">Землі лісогосподарського призначення (тис. га):</label>
+      <input type="text" id="reforestation" class="form-control" ng-model="ctrl.newObject.reforestation" required="true">
+    </div>
+    <div class="input-box">
+      <label for="eventLogging">Землі промислового призначення (тис. га):</label>
+      <input type="text" id="eventLogging" class="form-control" ng-model="ctrl.newObject.eventLogging" required="true">
+    </div>
+    <div class="input-box">
     <div class="input-box">
       <label for="forestPlanting">Посадка лісу (га):</label>
       <input type="text" id="forestPlanting" class="form-control" ng-model="ctrl.newObject.forestPlanting" required="true">
     </div>
-    <div class="input-box">
-      <label for="reforestation">Природне поновлення лісу (га):</label>
-      <input type="text" id="reforestation" class="form-control" ng-model="ctrl.newObject.reforestation" required="true">
-    </div>
-    <div class="input-box">
-      <label for="eventLogging">Проведення рубок (тис. м3):</label>
-      <input type="text" id="eventLogging" class="form-control" ng-model="ctrl.newObject.eventLogging" required="true">
-    </div>
-    <div class="input-box">
       <label for="id">Область: </label>
       <select name="" id="id" ng-model="ctrl.newObject.cityId" class="form-control" required="true">
         <option ng-value="item.cityId" ng-repeat="item in ctrl.regions">{{item.name}}</option>
