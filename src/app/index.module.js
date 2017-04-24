@@ -20,7 +20,8 @@ import { PolygonsService } from './services/polygon';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 
 let local = 'http://localhost:4000/';
-let selfIP = 'http://192.168.88.254:4000/';
+let inIP = 'http://192.168.88.254:4000/';
+let outIP = 'http://212.80.38.228:4000/';
 angular.module('waterTreatment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'textAngular'])
   .constant('moment', moment)
   .constant('API_URL', local)
